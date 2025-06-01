@@ -3,13 +3,13 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  dotnetSdkVersion: '6.x'
+  dotnetSdkVersion: '5.x'
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET SDK 5.0'
+  displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
-    version: '5.0'
+    version: '$(dotnetSdkVersion)'
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
