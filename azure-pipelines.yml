@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'ubuntu-20.04'
+  vmImage: 'ubuntu-22.04'
 
 variables:
   buildConfiguration: 'Release'
@@ -7,9 +7,9 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+  displayName: 'Use .NET SDK 5.0'
   inputs:
-    version: '$(dotnetSdkVersion)'
+    version: '5.0'
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
