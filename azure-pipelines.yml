@@ -16,7 +16,11 @@ steps:
 
 - script: |
     dotnet --info
-    dotnet list ./YourProject.csproj package
+    find . -name "*.csproj"
+    for proj in $(find . -name "*.csproj"); do
+      echo "Inspecting $proj"
+      dotnet list "$proj" package
+    done
   displayName: 'Debug .NET environment'
 
 - task: DotNetCoreCLI@2
