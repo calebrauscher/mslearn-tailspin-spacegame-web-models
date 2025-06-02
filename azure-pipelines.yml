@@ -3,16 +3,18 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  dotnetSdkVersion: '6.x'
+  dotnetSdkVersion: '8.0.x'
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_VERBOSE: true
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET SDK $(dotnetSdkVersion)'
+  displayName: 'Use .NET 8 SDK'
   inputs:
     version: '$(dotnetSdkVersion)'
+    packageType: 'sdk'
+    version: '8.0.x'
 
 - script: |
     dotnet --info
@@ -27,6 +29,7 @@ steps:
   displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
+    arguments: '--verbosity detailed'
     projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
