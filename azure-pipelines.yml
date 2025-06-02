@@ -15,14 +15,14 @@ steps:
     version: '$(dotnetSdkVersion)'
     packageType: 'sdk'
 
-- script: |
-    dotnet --info
-    find . -name "*.csproj"
-    for proj in $(find . -name "*.csproj"); do
-      echo "Inspecting $proj"
-      dotnet list "$proj" package
-    done
-  displayName: 'Debug .NET environment'
+# - script: |
+#     dotnet --info
+#     find . -name "*.csproj"
+#     for proj in $(find . -name "*.csproj"); do
+#       echo "Inspecting $proj"
+#       dotnet list "$proj" package
+#     done
+#   displayName: 'Debug .NET environment'
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
