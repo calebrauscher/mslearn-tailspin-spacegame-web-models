@@ -4,12 +4,20 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dotnetSdkVersion: '6.x'
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_VERBOSE: true
 
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
     version: '$(dotnetSdkVersion)'
+
+- script: |
+    dotnet --info
+    dotnet list ./YourProject.csproj package
+  displayName: 'Debug .NET environment'
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
